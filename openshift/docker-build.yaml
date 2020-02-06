@@ -1,0 +1,26 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  creationTimestamp: null
+  labels:
+    name: docker-build
+  name: docker-build
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: was-demo:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/msolberg/was-demo.git
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: registry.redhat.io/ubi7/ubi
+    type: Docker
+  triggers: {}
