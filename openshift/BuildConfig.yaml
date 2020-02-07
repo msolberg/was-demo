@@ -3,8 +3,8 @@ kind: BuildConfig
 metadata:
   creationTimestamp: null
   labels:
-    name: docker-build
-  name: docker-build
+    name: was-demo
+  name: was-demo
   nodeSelector: null
 spec:
   output:
