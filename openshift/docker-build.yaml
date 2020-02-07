@@ -6,6 +6,7 @@ metadata:
     name: docker-build
   name: docker-build
   nodeSelector: null
+spec:
   output:
     to:
       kind: ImageStreamTag
@@ -18,9 +19,9 @@ metadata:
       uri: https://github.com/msolberg/was-demo.git
     type: Git
   strategy:
+    type: Docker
     dockerStrategy:
       from:
         kind: DockerImage
-        name: registry.redhat.io/ubi7/ubi
-    type: Docker
-  triggers: {}
+        name: ibmcom/websphere-traditional:latest-ubi
+  triggers:
