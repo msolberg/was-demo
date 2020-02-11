@@ -49,13 +49,23 @@ spec:
 ```
 [openshift/BuildConfig.yaml](openshift/BuildConfig.yaml)
 
-For a local binary build, the `oc new-app` command can be used. Create a directory with the EAR file, the WAS configuration files, and a Dockerfile at the top level. (Or use this repository as a template.) Then, create the build config and start the build.
+For a local binary build, the `oc new-build` command can be used. Create a directory with the EAR file, the WAS configuration files, and a Dockerfile at the top level. (Or use this repository as a template.) Then, create the build config and start the build.
 
 ```
 $ git clone https://github.com/msolberg/was-demo.git
 $ oc new-build --strategy docker --binary --docker-image ibmcom/websphere-traditional:latest-ubi --name <APP_NAME>
 $ oc start-build <APP_NAME> --from-dir was-demo --follow
 ```
+
+## Deploying the application image on OpenShift
+Once an application image has been created from the base image, it functions like any other image within OpenShift. To create a deployment from the image, use the `oc new-app` command and refence either the image in a remote registry or the imagestream from the build.
+
+```
+$ oc new-app was-demo/was-demo:latest
+$ oc expose svc/was-demo --port 9080
+```
+
+The Dockerfile included in this repository exposes ports 9043, 9080, and 9443.
 
 ## Instructions
 This demo assumes that you have an existing EAR file (or directory) to deploy onto WebSphere. To use, first clone this repository:
