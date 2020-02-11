@@ -53,7 +53,7 @@ For a local binary build, the `oc new-app` command can be used. Create a directo
 
 ```
 $ git clone https://github.com/msolberg/was-demo.git
-$ oc new-build --strategy docker --binary --docker-image ibmcom/websphere-liberty:19.0.0.9-javaee7-ubi-min --name <APP_NAME>
+$ oc new-build --strategy docker --binary --docker-image ibmcom/websphere-traditional:latest-ubi --name <APP_NAME>
 $ oc start-build <APP_NAME> --from-dir was-demo --follow
 ```
 
